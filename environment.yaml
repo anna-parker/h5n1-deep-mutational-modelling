@@ -1,0 +1,17 @@
+name: autodock
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - meeko
+  - numpy
+  - scipy
+  - rdkit
+  - gemmi
+  - vina
+  - pip
+  - molscrub
+  - multiprocess
+  - chemicalite
+  - pip:
+     - ringtail
