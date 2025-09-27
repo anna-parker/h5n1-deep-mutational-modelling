@@ -14,3 +14,9 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python scripts/create_mutants.py --reference data/H5_reference.fasta
 ```
+
+2. Run alphaFold2 monomer to infer the structure of the mutated H5 proteins. To reduce runtime we first run alphaFold with the reference H5 and reuse the MSAs that were downloaded during this process for the other mutants. (Downloading MSAs takes roughly 40min). In order to reuse MSAs the msas/ folder must be copied into the folder where the new output is generated and alphafold must be called with the `--use-precomputed-msas` argument. (Sadly I cannot reuse the downloaded PDBs which adds an additional 10min to the runtime). I run alphaFold on the ETH cluster, a script to submit and generate alphafold jobs for each mutant via SLURM can be called using:
+
+```
+python scripts/submit_jobs.py --fasta-dir <dir>
+```
